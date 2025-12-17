@@ -1,0 +1,19 @@
+# 1. Dependency directories (The biggest folder you should NEVER push)
+node_modules/
+
+# 2. Environment variables (Files containing passwords or API keys)
+.env
+.env.local
+
+# 3. Logs
+logs
+*.log
+npm-debug.log*
+
+# 4. OS metadata (System files)
+.DS_Store
+Thumbs.db
+
+# 5. IDE specific folders (Editor settings)
+.vscode/
+.idea/

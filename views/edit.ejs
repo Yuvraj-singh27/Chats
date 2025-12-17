@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Add Chat</title>
+   <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+   <% if (typeof update !== 'undefined') { %>
+      <script>alert("<%= update %>");</script>
+    <% } %>
+   <div class="form-wrapper">
+      <form class="chat-form" id="chatForm" method="POST" action="/chats/<%= chat._id %>/edit?_method=PATCH">         <h2 class="form-title">💬 Edit a Message</h2>
+         <input type="text" id="from" name="newfrom" value="<%= chat.from %>" placeholder="<%= chat.from %>">
+         <input type="text" id="to" name="newto" value="<%= chat.to %>" placeholder="<%= chat.to %>">
+         <textarea id="message" name="newmessage" required><%= chat.message %></textarea>
+
+         <button type="submit" class="btn">Send</button><br>
+         <a href="/chats" class="btnc">Cancel</a>
+
+      </form>
+   </div>
+</body>
+</html>

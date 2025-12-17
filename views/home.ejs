@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Chat List</title>
+   <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+   <div class="container">
+      <h1>💬 Chats</h1>
+        <!-- New Chat Button -->
+      <div class="top-actions">
+        <a href="/chats/new" class="btn new">➕ New Chat</a>
+      </div>
+      <% if (chats.length === 0) { %>
+         <p class="empty">No chats found!</p>
+      <% } else { %>
+         <div class="chat-list">
+            <% chats.forEach((chat, index) => { %>
+               <div class="chat-card">
+                  <p><strong>From:</strong> <%= chat.from %></p>
+                  <p><strong>To:</strong> <%= chat.to %></p>
+                  <p><strong>Message:</strong> <%= chat.message %></p>
+                  <p><strong>id:</strong> <%= chat._id %></p>
+                  <p class="date"><%= chat.created_at.toLocaleString() %></p>
+
+                  <div class="actions">
+                     <form action="/chats/<%= chat._id %>/edit" method="GET">
+                        <button type="submit" class="btn edit">✏️ Edit</button>
+                     </form>
+                     <form action="/chats/<%= chat._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn delete">🗑 Delete</button>
+                     </form>
+                  </div>
+               </div>
+            <% }) %>
+         </div>
+      <% } %>
+   </div>
+</body>
+</html>
